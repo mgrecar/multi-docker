@@ -1,4 +1,5 @@
 FROM node:alpine
+RUN apk add --upgrade curl sqlite
 
 WORKDIR '/app'
 COPY ./package.json ./
