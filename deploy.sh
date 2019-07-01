@@ -8,6 +8,6 @@ docker push mgrecar/multi-client:$GIT_SHA
 docker push mgrecar/multi-server:$GIT_SHA
 docker push mgrecar/multi-worker:$GIT_SHA
 kubectl apply -f k8s
-kubectl rollout restart deployments/client-deployment
-kubectl rollout restart deployments/server-deployment
-kubectl rollout restart deployments/worker-deployment
+kubectl set image deployments/server-deployment server=mgrecar/multi-server:$GIT_SHA
+kubectl set image deployments/client-deployment client=mgrecar/multi-client:$GIT_SHA
+kubectl set image deployments/worker-deployment worker=mgrecar/multi-worker:$GIT_SHA
